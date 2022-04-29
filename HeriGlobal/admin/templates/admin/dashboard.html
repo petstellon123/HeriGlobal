@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/w3-css.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Poppins", sans-serif}
+
+
+    </style>
+</head>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-heriblue w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"
+           href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large  w3-small w3-wide"><i
+                class="fa fa-home w3-margin-right"></i>Heri Global Merchant</a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i
+                class="fa fa-globe"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+           title="Account Settings"><i class="fa fa-user"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
+                class="fa fa-envelope"></i></a>
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span
+                    class="w3-badge w3-right w3-small w3-green">3</span></button>
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+                <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+                <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
+                <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
+            </div>
+        </div>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
+           title="My Account">
+            <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+        </a>
+    </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-heriblue w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+        <!-- Left Column -->
+        <div class="w3-col m3">
+            <!-- Alert Box -->
+            <div class="w3-container w3-display-container w3-center w3-round w3-grey w3-border w3-border-heriorange w3-theme-border w3-margin-bottom">
+                <p><img src="{{ url_for('static', filename='/images/white.png') }}" width="100%"
+                        alt="cash"></p>
+                <h1 class="w3-xxlarge w3-white w3-text-grey w3-round"><strong><span
+                        class="w3-text-heriorange">Hi!</span> {{
+                    current_user.username }}</strong></h1>
+                <p class="w3-wide w3-text-white"><b>Welcome back...</b></p>
+                <hr>
+                <p>
+                    <a href="{{ url_for('auth_bp.logout') }}"
+                       class="w3-button w3-wide w3-block w3-small w3-theme-l4 w3-border w3-round-large">Logout</a>
+                </p>
+            </div>
+            <!-- Accordion -->
+            <div class="w3-card w3-round">
+                <div class="w3-white">
+                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l4 w3-left-align"><i
+                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Profile
+                    </button>
+                    <div id="Demo1" class="w3-hide w3-container">
+                        <p>Some text..</p>
+                    </div>
+                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l4 w3-left-align"><i
+                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Edit Profile
+                    </button>
+                    <div id="Demo2" class="w3-hide w3-container">
+                        <p>Some other text..</p>
+                    </div>
+                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l4 w3-left-align"><i
+                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Change password
+                    </button>
+                    <div id="Demo3" class="w3-hide w3-container">
+                        <div class="w3-row-padding">
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- End Left Column -->
+        </div>
+
+        <!-- Middle Column -->
+        <div class="w3-col m7">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div id="flash" class="w3-modal" style="display: block;">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-{{category}}">
+                    <span onclick="document.getElementById('flash').style.display='none'"
+                          class="w3-button w3-display-topright">&times;</span>
+                    </header>
+                    <div class="w3-container">
+                        <p class="w3-text-{{category}}">{{ message }}</p>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="w3-row-padding">
+                <div class="w3-col m12 ">
+                    <div class="w3-container w3-theme-l4 w3-round w3-border">
+                        <h1 class="w3-xlarge w3-text-herired w3-center">Today: <b class="w3-wide w3-text-heriblue">{{(date).strftime("%A,
+                            %d, %B, %Y")}}</b></h1>
+                        <div class="w3-panel w3-heriorange w3-round-large w3-card-4 w3-margin">
+                            <h1 class="w3-jumbo"><b>₦1,000,000.00</b></h1>
+                            <p class="w3-wide w3-large">Total Sale</p>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <div class="w3-panel w3-green w3-round-large w3-card-4">
+                                    <h1 class="w3-xxlarge"><b>₦5,450,890.00</b></h1>
+                                    <p class="w3-wide w3-large">Cash Sale</p>
+                                </div>
+                            </div>
+                            <div class="w3-half">
+                                <div class="w3-panel w3-herired w3-round-large w3-card-4">
+                                    <h1 class="w3-xxlarge"><b>₦234,890.00</b></h1>
+                                    <p class="w3-wide w3-large">Credit Sale</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-container w3-card w3-theme-l4 w3-round w3-margin"><br>
+                <div class="w3-row-padding">
+                    <div class="w3-half">
+                        <div class="w3-panel w3-round-large w3-center w3-border">
+                            <h1 class="w3-xxlarge w3-text-heriblue"><b>Stock Desk</b></h1>
+                            <p>
+                            <hr>
+                            <button onclick="document.getElementById('new_stock').style.display='block'"
+                                    class="w3-button w3-block w3-black w3-round-large">Register Stock+
+                            </button>
+                            </p>
+                            <p>
+                                <button class="w3-button w3-block w3-green w3-round-large">Add Stock+</button>
+                            </p>
+                            <p>
+                                <button class="w3-button w3-block w3-heriorange w3-round-large">Edit Stock+</button>
+                            </p>
+                            <p>
+                                <button onclick="document.getElementById('all_items').style.display='block'"
+                                        class="w3-button w3-block w3-blue w3-round-large">View Stock+
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w3-half">
+                        <div class="w3-panel w3-round-large w3-center w3-border">
+                            <h1 class="w3-xxlarge w3-text-herired"><b>Sale's Rep</b></h1>
+                            <p>
+                            <hr>
+                            <button class="w3-button w3-block  w3-green w3-round-large"
+                                    onclick="document.getElementById('signup').style.display='block'">Create Account
+                            </button>
+                            </p>
+                            <p>
+                                <button onclick="document.getElementById('all_reps').style.display='block'"
+                                        class="w3-button w3-block w3-blue w3-round-large">View All
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p><img src="{{ url_for('static', filename='/images/banner.png') }}" width="100%"
+                        alt="cash"></p>
+            </div>
+
+            <!-- Modal signup sales rep-->
+            <div id="signup" class="w3-modal w3-animate-opacity">
+                <div class="w3-modal-content w3-theme-l4" style="padding:32px">
+                    <div class="w3-container w3-theme-l4 w3-center">
+                        <i onclick="document.getElementById('signup').style.display='none'"
+                           class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-xlarge"></i>
+                        <img class="w3-margin" width="35%"
+                             src="{{ url_for('static', filename='/images/orange.png') }}" alt="logo">
+                        <h3 class="w3-xxlarge w3-text-grey"><b>Create sales rep </b>
+                            <i><img src="{{ url_for('static', filename='/images/signup.png') }}" width="8%"/></i></h3>
+                        <form action="{{ url_for('admin_bp.create_sales_rep') }}" method="POST" class="w3-text-black">
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="text" name="username"
+                                   placeholder="Username" autofocus required><br>
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="text" name="name"
+                                   placeholder="Name"
+                                   required><br>
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="email" name="email"
+                                   placeholder="Email" required><br>
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="password" name="password"
+                                   placeholder="Password" required><br>
+                            <input type="submit" value="Create Sales Rep"
+                                   class="w3-button w3-block w3-section w3-heriorange w3-ripple w3-padding">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal register new stock-->
+            <div id="new_stock" class="w3-modal w3-animate-opacity">
+                <div class="w3-modal-content w3-theme-l4" style="padding:32px">
+                    <div class="w3-container w3-center">
+                        <i onclick="document.getElementById('new_stock').style.display='none'"
+                           class="fa fa-remove w3-xlarge w3-button w3-transparent w3-right w3-xlarge"></i>
+                        <img class="w3-margin" width="35%"
+                             src="{{ url_for('static', filename='/images/orange.png') }}" alt="logo">
+                        <h3 class="w3-xxlarge w3-text-heriblue"><b>Register New Item</b></h3>
+                        <form action="{{ url_for('admin_bp.register_stock') }}" method="POST" class="w3-text-black">
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="text" name="name"
+                                   placeholder="Item name"
+                                   required><br>
+                            <div class="w3-input w3-round w3-border w3-white w3-left w3-margin-bottom">
+                                <input class="w3-radio" type="radio" name="has_slate" value="True" checked required>
+                                <label><b>Has Slate</b></label> |
+                                <input required onclick="document.getElementById('no_slate').disabled='disabled';"
+                                       class="w3-radio" type="radio" name="has_slate" value="False">
+                                <label><b>No Slate</b></label>
+                            </div>
+                            <input id="no_slate" class="w3-input w3-round  w3-text-heriblue w3-border" type="number"
+                                   max="3" name="num_slate"
+                                   placeholder="Number of Slate" required><br>
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="number" name="quantity"
+                                   placeholder="Quantity" required><br>
+                            <input class="w3-input w3-round  w3-text-heriblue w3-border" type="number" name="unit_price"
+                                   placeholder="Unit Price" required><br>
+                            <input type="submit" value="Register Item"
+                                   class="w3-button w3-block w3-section w3-heriorange w3-ripple w3-padding">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-------View all sales reps-------->
+            <div id="all_reps" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-theme-l4 w3-center">
+        <span onclick="document.getElementById('all_reps').style.display='none'"
+              class="w3-button w3-display-topright">&times;</span>
+                        <img class="w3-margin" src="{{ url_for('static', filename='/images/orange.png') }}"
+                             width="30%"/>
+                        <h2 class="w3-text-heriblue"><b>Registered Sale's Reps</b></h2>
+                    </header>
+                    <div class="w3-container">
+                        {% if reps %}
+                        <div class="w3-responsive w3-margin">
+                            <table class="w3-table-all">
+                                <tr>
+                                    <th>USERNAME</th>
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIVATE</th>
+                                    <th>BLOCK</th>
+                                    <th>DELETE</th>
+                                    <th>RESET PASSWORD</th>
+                                </tr>
+                                {% for users in reps %}
+                                <tr>
+                                    <td>{{ users.username }}</td>
+                                    <td>{{ users.name }}</td>
+                                    <td>{{ users.email }}</td>
+                                    {% if users.status == "ACTIVE" %}
+                                    <td class="w3-text-green"><b>{{ users.status }}</b></td>
+                                    {% elif users.status == "BLOCKED" %}
+                                    <td class="w3-text-amber"><b>{{ users.status }}</b></td>
+                                    {% else %}
+                                    <td class="w3-text-red"><b>{{ users.status }}</b></td>
+                                    {% endif %}
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=users.id, action='activate') }}"
+                                           class="w3-button w3-block w3-green w3-section w3-small w3-round"
+                                           title="Activate"><i
+                                                class="fa fa-check"></i></a></td>
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=users.id, action='block') }}"
+                                           class="w3-button w3-block w3-yellow w3-section w3-small w3-round"
+                                           title="block"><i
+                                                class="fa fa-remove"></i></a></td>
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=users.id, action='delete') }}"
+                                           class="w3-button w3-block w3-red w3-section w3-small w3-round"
+                                           title="Delete"><i
+                                                class="fa fa-remove"></i></a></td>
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=users.id, action='reset_password') }}"
+                                           class="w3-button w3-block w3-blue w3-section w3-small w3-round"
+                                           title="Reset password"><i
+                                                class="fa fa-circle-o-notch fa-fw"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="w3-center w3-text-red w3-xlarge">No Registered Sales rep.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-------View all registered items-------->
+            <div id="all_items" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-theme-l4 w3-center">
+        <span onclick="document.getElementById('all_items').style.display='none'"
+              class="w3-button w3-display-topright">&times;</span>
+                        <img class="w3-margin" src="{{ url_for('static', filename='/images/orange.png') }}"
+                             width="30%"/>
+                        <h2 class="w3-text-heriblue"><b>Registered Items</b></h2>
+                    </header>
+                    <div class="w3-container">
+                        {% if item %}
+                        <div class="w3-responsive w3-margin">
+                            <table class="w3-table-all">
+                                <tr>
+                                    <th>ITEM NAME</th>
+                                    <th>HAS SLATE</th>
+                                    <th>NUMBERS OF SLATE</th>
+                                    <th>QUANTITY AVAILABLE</th>
+                                    <th>UNIT PRICE</th>
+                                    <th>STATUS</th>
+                                    <th>AVAILABLE</th>
+                                    <th>NOT AVAILABLE</th>
+                                </tr>
+                                {% for fish in item %}
+                                <tr>
+                                    <td>{{ fish.name }}</td>
+                                    <td>{{ fish.has_slate }}</td>
+                                    <td>{{ fish.slate }}</td>
+                                    <td>{{ fish.quantity }}</td>
+                                    <td>₦{{ "{:,.2f}".format(fish.price) }}</td>
+                                    {% if fish.available %}
+                                    <td class="w3-text-green"><b>AVAILABLE</b></td>
+                                    {% else %}
+                                    <td class="w3-text-red"><b>NOT AVAILABLE</b></td>
+                                    {% endif %}
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=fish.id, action='activate') }}"
+                                           class="w3-button w3-block w3-green w3-section w3-small w3-round"
+                                           title="Activate"><i
+                                                class="fa fa-check"></i></a></td>
+                                    <td>
+                                        <a href="{{ url_for('admin_bp.edit_sales_profile', id=fish.id, action='delete') }}"
+                                           class="w3-button w3-block w3-red w3-section w3-small w3-round"
+                                           title="Delete"><i
+                                                class="fa fa-remove"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="w3-center w3-text-red w3-xlarge">No Registered Item.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End Middle Column -->
+        </div>
+
+        <!-- Right Column -->
+        <div class="w3-col m2">
+            <div class="w3-card w3-round w3-theme-l4 w3-center">
+                <div class="w3-container">
+                    <p class="w3-heriblue"><b>REPORT</b></p>
+                    <img src="{{ url_for('static', filename='/images/report.png') }}" alt="Forest" style="width:100%;">
+                    <p>
+                        <button class="w3-button w3-block w3-heriorange w3-round-large">Stock</button>
+                    </p>
+                    <p>
+                        <button class="w3-button w3-block w3-green w3-round-large">Cash Sales</button>
+                    </p>
+                    <p>
+                        <button class="w3-button w3-block w3-herired w3-round-large">Credit Sales</button>
+                    </p>
+                    <p>
+                        <button class="w3-button w3-block w3-heriblue w3-round-large">Balance Sheet</button>
+                    </p>
+                </div>
+            </div>
+            <br>
+
+            <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+</div>
+<br>
+
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else {
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className =
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+
+</script>
+
+</body>
+</html>
