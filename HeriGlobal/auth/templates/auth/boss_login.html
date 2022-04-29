@@ -1,0 +1,86 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>{{title}}</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords"
+          content="Merged Forms Page Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <!-- //Meta tag Keywords -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/w3.css')}}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" type="text/css" media="all"/>
+    <!-- Style-CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/w3-css.css')}}" type="text/css" media="all"/>
+    <!-- Style-CSS -->
+</head>
+<body>
+{% if get_flashed_messages() %}
+{% for message in get_flashed_messages() %}
+<div id="id01" class="w3-modal" style="display: block;">
+    <div class="w3-modal-content w3-card-4">
+        <div class="w3-container">
+					<span onclick="document.getElementById('id01').style.display='none'"
+                          class="w3-button w3-display-topright">&times;</span>
+            <p class="w3-padding">{{ message }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+<!-- /form-26-section -->
+<section class="form-26">
+    <div class="form-26-mian">
+        <div class="layer">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <div class="forms-26-info">
+                        <a href="{{ url_for('auth_bp.login') }}"><img
+                                src="{{ url_for('static', filename='images/white.png') }}" alt="logo" width="40%"></a>
+                        <h2>Admin Login</h2>
+                        <!--                        <p>We provide-->
+                        <!--							Genuine Investment Solutions-->
+                        <!--							to Organizations, Businesses and Individuals!</p>-->
+                    </div>
+                    <div class="form-right-inf">
+                        <form action="{{ url_for('auth_bp.login') }}" method="POST" class="signin-form">
+                            <div class="forms-gds">
+                                <div class="form-input">
+                                    <input class="w3-input w3-round w3-text-heriblue w3-border" type="text"
+                                           name="username"
+                                           placeholder="Username" autofocus><br>
+                                </div>
+                                <div class="form-input">
+                                    <input class="w3-input w3-round w3-text-heriblue w3-border" type="password"
+                                           name="password"
+                                           placeholder="Password"><br>
+                                </div>
+                                <div class="form-input">
+                                    <button type="submit" class="btn w3-round w3-heriorange">Login</button>
+                                </div>
+                            </div>
+                            <h6 class="already"> Dont have an account? <a
+                                    href="{{ url_for('auth_bp.signup') }}"><span>Register Here<span></span></span></a></h6>
+                        </form>
+
+                    </div>
+                    <div class="copyright text-center">
+                        <p>© 2022 Heri Global Merchant. All rights reserved</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //form-26-section -->
+</body>
+</html>

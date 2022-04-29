@@ -1,0 +1,3 @@
+blue: #00092C
+red: #B20600
+yellow: #FF5F00
